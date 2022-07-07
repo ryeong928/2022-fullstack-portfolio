@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+    <defs>
+        <clipPath id="yg9ukmvrba">
+            <path data-name="사각형 2569" style="fill:none" d="M0 0h24v20.454H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="그룹 3364">
+        <path data-name="사각형 2578" style="opacity:.33;fill:none" d="M0 0h30v30H0z"/>
+        <g data-name="그룹 3169">
+            <path data-name="사각형 2567" transform="translate(3.88 9.596)" style="fill:#fff" d="M0 0h22.241v14.979H0z"/>
+            <g data-name="그룹 3156">
+                <g data-name="그룹 3155" style="clip-path:url(#yg9ukmvrba)" transform="translate(3 5)">
+                    <path data-name="사각형 2568" d="M-.224-1h22.448A.776.776 0 0 1 23-.224V13a.776.776 0 0 1-.776.776H-.224A.776.776 0 0 1-1 13V-.224A.776.776 0 0 1-.224-1zM21.447.553H.553v11.669h20.894z" transform="translate(1 6.679)" style="fill:#333"/>
+                </g>
+            </g>
+            <path data-name="사각형 2570" transform="translate(3.88 7.624)" style="fill:#fff" d="M0 0h22.241v4.69H0z"/>
+            <g data-name="그룹 3158">
+                <g data-name="그룹 3157" style="clip-path:url(#yg9ukmvrba)" transform="translate(3 5)">
+                    <path data-name="사각형 2571" d="M-.224-1h22.448A.776.776 0 0 1 23-.224v4.14a.776.776 0 0 1-.776.776H-.224A.776.776 0 0 1-1 3.916v-4.14A.776.776 0 0 1-.224-1zM21.447.553H.553V3.14h20.894z" transform="translate(1 2.54)" style="fill:#333"/>
+                </g>
+            </g>
+            <path data-name="패스 8057" d="M4.979 4.489z" transform="translate(2.4 4.88)" style="fill:#fff"/>
+            <g data-name="그룹 3160">
+                <g data-name="그룹 3159" style="clip-path:url(#yg9ukmvrba)" transform="translate(3 5)">
+                    <path data-name="선 220" d="M-.224 3.633A.776.776 0 0 1-1 2.856v-3.08A.776.776 0 0 1-.224-1a.776.776 0 0 1 .776.776v3.08a.776.776 0 0 1-.776.777z" transform="translate(4.089 1)" style="fill:#333"/>
+                </g>
+            </g>
+            <path data-name="패스 8058" d="M10.218 4.489z" transform="translate(.715 4.88)" style="fill:#fff"/>
+            <g data-name="그룹 3162">
+                <g data-name="그룹 3161" style="clip-path:url(#yg9ukmvrba)" transform="translate(3 5)">
+                    <path data-name="선 221" d="M-.224 3.633A.776.776 0 0 1-1 2.856v-3.08A.776.776 0 0 1-.224-1a.776.776 0 0 1 .776.776v3.08a.776.776 0 0 1-.776.777z" transform="translate(8.156 1)" style="fill:#333"/>
+                </g>
+            </g>
+            <path data-name="패스 8059" d="M15.457 4.489z" transform="translate(-.456 4.88)" style="fill:#fff"/>
+            <g data-name="그룹 3164">
+                <g data-name="그룹 3163" style="clip-path:url(#yg9ukmvrba)" transform="translate(3 5)">
+                    <path data-name="선 222" d="M-.224 3.633A.776.776 0 0 1-1 2.856v-3.08A.776.776 0 0 1-.224-1a.776.776 0 0 1 .776.776v3.08a.776.776 0 0 1-.776.777z" transform="translate(12.224 1)" style="fill:#333"/>
+                </g>
+            </g>
+            <path data-name="패스 8060" d="M20.695 4.489z" transform="translate(-1.627 4.88)" style="fill:#fff"/>
+            <g data-name="그룹 3166">
+                <g data-name="그룹 3165" style="clip-path:url(#yg9ukmvrba)" transform="translate(3 5)">
+                    <path data-name="선 223" d="M-.224 3.633A.776.776 0 0 1-1 2.856v-3.08A.776.776 0 0 1-.224-1a.776.776 0 0 1 .776.776v3.08a.776.776 0 0 1-.776.777z" transform="translate(16.291 1)" style="fill:#333"/>
+                </g>
+            </g>
+            <path data-name="패스 8061" d="M25.934 4.489z" transform="translate(-3.313 4.88)" style="fill:#fff"/>
+            <g data-name="그룹 3168">
+                <g data-name="그룹 3167" style="clip-path:url(#yg9ukmvrba)" transform="translate(3 5)">
+                    <path data-name="선 224" d="M-.224 3.633A.776.776 0 0 1-1 2.856v-3.08A.776.776 0 0 1-.224-1a.776.776 0 0 1 .776.776v3.08a.776.776 0 0 1-.776.777z" transform="translate(20.359 1)" style="fill:#333"/>
+                </g>
+            </g>
+            <path data-name="패스 8062" d="M6.385 13.419z" transform="translate(1.542 2)" style="fill:#fff"/>
+            <path data-name="선 225" d="M1.085.759H-.12A.88.88 0 0 1-1-.12.88.88 0 0 1-.12-1h1.205a.88.88 0 0 1 .88.88.88.88 0 0 1-.88.879z" transform="translate(8.114 15.537)" style="fill:#333"/>
+            <path data-name="패스 8063" d="M11.976 13.419z" transform="translate(.265 2)" style="fill:#fff"/>
+            <path data-name="선 226" d="M1.085.759H-.12A.88.88 0 0 1-1-.12.88.88 0 0 1-.12-1h1.205a.88.88 0 0 1 .88.88.88.88 0 0 1-.88.879z" transform="translate(12.383 15.537)" style="fill:#333"/>
+            <path data-name="패스 8064" d="M17.566 13.419z" transform="translate(-1.012 2)" style="fill:#fff"/>
+            <path data-name="선 227" d="M1.085.759H-.12A.88.88 0 0 1-1-.12.88.88 0 0 1-.12-1h1.205a.88.88 0 0 1 .88.88.88.88 0 0 1-.88.879z" transform="translate(16.653 15.537)" style="fill:#333"/>
+            <path data-name="패스 8065" d="M23.157 13.419z" transform="translate(-2.289 2)" style="fill:#fff"/>
+            <path data-name="선 228" d="M1.085.759H-.12A.88.88 0 0 1-1-.12.88.88 0 0 1-.12-1h1.205a.88.88 0 0 1 .88.88.88.88 0 0 1-.88.879z" transform="translate(20.923 15.537)" style="fill:#333"/>
+            <path data-name="패스 8066" d="M6.385 17.886z" transform="translate(1.542 1.001)" style="fill:#fff"/>
+            <path data-name="선 229" d="M1.085.759H-.12A.88.88 0 0 1-1-.12.88.88 0 0 1-.12-1h1.205a.88.88 0 0 1 .88.88.88.88 0 0 1-.88.879z" transform="translate(8.114 18.967)" style="fill:#333"/>
+            <path data-name="패스 8067" d="M11.976 17.886z" transform="translate(.265 1.001)" style="fill:#fff"/>
+            <path data-name="선 230" d="M1.085.759H-.12A.88.88 0 0 1-1-.12.88.88 0 0 1-.12-1h1.205a.88.88 0 0 1 .88.88.88.88 0 0 1-.88.879z" transform="translate(12.383 18.967)" style="fill:#333"/>
+            <path data-name="패스 8068" d="M17.566 17.886z" transform="translate(-1.012 1.001)" style="fill:#fff"/>
+            <path data-name="선 231" d="M1.085.759H-.12A.88.88 0 0 1-1-.12.88.88 0 0 1-.12-1h1.205a.88.88 0 0 1 .88.88.88.88 0 0 1-.88.879z" transform="translate(16.653 18.967)" style="fill:#333"/>
+            <path data-name="패스 8069" d="M23.157 17.886z" transform="translate(-2.282 1.001)" style="fill:#fff"/>
+            <path data-name="선 232" d="M1.014.759H-.12A.88.88 0 0 1-1-.12.88.88 0 0 1-.12-1h1.134a.88.88 0 0 1 .88.88.88.88 0 0 1-.88.879z" transform="translate(20.93 18.967)" style="fill:#333"/>
+        </g>
+    </g>
+</svg>
