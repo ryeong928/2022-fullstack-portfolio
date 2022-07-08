@@ -158,7 +158,7 @@ export const ModalLogin = styled.form`
 // Button
 export const ButtonMain = styled.button`
   display: block;
-  width: 100%;
+  width: ${props => props.placeholder || "100%"};
   height: 50px;
   padding: 0 10px;
   line-height: 47px;
@@ -362,6 +362,120 @@ color: ${props => props.placeholder ? Constants.colors.baseColor5 : "inherit"};
   }
 }
 `
+export const InputTitle = styled.input`
+  font-size: 18px;
+  width: 100%;
+  height: 50px;
+  outline: none;
+  border: 1px solid ${(props) => props.value ? Constants.colors.baseColor2 : Constants.colors.baseColor5};
+  padding: 0 15px;
+  &::placeholder {
+    font-size: 16px;
+    color: ${Constants.colors.baseColor5};
+  }
+  &:focus{
+    border-color: ${Constants.colors.pointColor1};
+  }
+`
+export const InputArea = styled.textarea`
+  font-size: 16px;
+  width: 100%;
+  height: 70vh;
+  resize: none;
+  outline: none;
+  border: 1px solid ${(props) => props.value ? Constants.colors.baseColor2 : Constants.colors.baseColor5};
+  padding: 12px 15px;
+  &::placeholder {
+    font-size: 14px;
+    color: ${Constants.colors.baseColor5};
+  }
+  &:focus{
+    border-color: ${Constants.colors.pointColor1};
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`
+// Card
+export const CardHotPost = styled.div`
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: ${props => props.color === "img" ? "black" : "linear-gradient(0deg, rgba(54,157,255,1) 0%, rgba(236,91,255,0.8036175710594315) 100%)"};
+  color: white;
+  cursor: pointer;
+  & > img{
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+  &:hover > img{
+    transition: 0.2s;
+    opacity: 1;
+  }
+  &: hover > div > div:nth-of-type(1){
+    transition: 0.2s;
+    color: ${props => props.color === "img" ? "transparent" : "white"};
+  }
+  & > div{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    & > div:nth-of-type(1){
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      color: white;
+      width: 100%;
+      text-align: center;
+    }
+    & > div:nth-of-type(2){
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+    & > div:nth-of-type(3){
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    & > div:nth-of-type(4){
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+    }
+  }
+`
+export const CardPost = styled.div`
+  border: 1px solid ${Constants.colors.baseColor6};
+  background-color: ${Constants.colors.baseColor8};
+  color: ${Constants.colors.baseColor2};
+  cursor: pointer;
+  padding: 10px;
+  & > section{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    & > div:nth-of-type(1){
+      flex: 1;
+    }
+  }
+  &:hover{
+    background-color: ${Constants.colors.baseColor3};
+    color: white;
+  }
+`
 // Frame
 export const FrameSelectBox = styled(Grid)`
   & > button{
@@ -381,6 +495,41 @@ export const FrameSelectBox = styled(Grid)`
     color: white;
     border: 1px solid ${Constants.colors.pointColor1};
     background-color: ${Constants.colors.pointColor1};
+  }
+`
+export const FramePostPagination = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  & > svg{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    fill: #333;
+    &:hover{
+      transition: 0.2s;
+      fill: ${Constants.colors.pointColor1};
+    }
+  }
+  & > section{
+    display: flex;
+    gap: 5px;
+    & > div{
+      font-size: 14px;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+    & > div:hover{
+      transition: 0.2s;
+      color: ${Constants.colors.pointColor1};
+      transform: translateY(-1.5px);
+    }
+    & > div.pagination_current_index{
+      color: ${Constants.colors.pointDeep};
+    }
   }
 `
 // ETC

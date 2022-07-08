@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { IF_ImageData } from '../lib/IF'
-import {InputMain, InputImage, InputDate} from '../lib/styled'
+import {InputMain, InputImage, InputDate, InputTitle, InputArea} from '../lib/styled'
 import IconCalendar from '../resources/IconCalendar.svg'
 import Profile from '../resources/Profile.svg'
 import IconCamera from '../resources/IconCamera.svg'
@@ -84,8 +84,41 @@ const Date = (props: InputMainProps) => {
     </InputDate>
   )
 }
+const Title = (props: InputMainProps) => {
+  const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    props.setValue(e.currentTarget.value)
+  }
+  return(
+    <InputTitle
+    value={props.value} 
+    onChange={onChange} 
+    placeholder={props.placeholder || ""} 
+    readOnly={props.readOnly}
+    type={"text"} 
+    spellCheck={false}
+    style={props.style}
+    />
+  )
+}
+const Area = (props: InputMainProps) => {
+  const onChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
+    props.setValue(e.currentTarget.value)
+  }
+  return(
+    <InputArea
+    value={props.value} 
+    onChange={onChange} 
+    placeholder={props.placeholder || ""} 
+    readOnly={props.readOnly}
+    spellCheck={false}
+    style={props.style}
+    />
+  )
+}
 export default {
   Main,
   Image,
   Date,
+  Title,
+  Area,
 }

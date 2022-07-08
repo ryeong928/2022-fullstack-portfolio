@@ -4,6 +4,7 @@ import {
   IF_req_login, 
   IF_res_login,
   IF_member,
+  IF_req_post,
 } from "./IF"
 
 const Axios = axios.create({
@@ -53,6 +54,15 @@ export const req_me = async (session: string) => {
 export const req_logout = async (session: string) => {
   try{
     const res = await Axios.patch('/user/logout', {session})
+    if(res.data.result) return true
+  }catch(err){
+    handleError(err)
+  }
+}
+// 게시글 업로드
+export const req_post = async (params:IF_req_post) => {
+  try{
+    const res = await Axios.post('/post', params)
     if(res.data.result) return true
   }catch(err){
     handleError(err)

@@ -4,17 +4,18 @@ import {ButtonMain, ButtonSub, ButtonNotice1, ButtonNotice2} from '../lib/styled
 // 타입지정 ({children, ...rest}:{children: React.ReactNode} & React.HTMLAttributes<HTMLDivElement>)
 interface ButtonMainProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   color?: "gray" | "white" | "deep"
+  width?: string
 }
 const Main = (props:ButtonMainProps) => {
-  const {color, ...rest} = props
+  const {color, width, ...rest} = props
   return(
-    <ButtonMain color={color || ""} {...rest}>{props.children}</ButtonMain>
+    <ButtonMain color={color || ""} placeholder={width || ""} {...rest}>{props.children}</ButtonMain>
   )
 }
 const Sub = (props:ButtonMainProps) => {
-  const {color, ...rest} = props
+  const {color, width, ...rest} = props
   return(
-    <ButtonSub color={color || ""} {...rest}>{props.children}</ButtonSub>
+    <ButtonSub color={color || ""} placeholder={width || ""} {...rest}>{props.children}</ButtonSub>
   )
 }
 interface ButtonNoticeProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{

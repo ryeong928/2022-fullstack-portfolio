@@ -30,13 +30,13 @@ const Header = () => {
       <section>
         <div className={location === "/" ? "current_path" : ""} data-path={"/"}>홈</div>
         <div className={location.includes("/products") ? "current_path" : ""} data-path={"/products"}>제품</div>
-        <div className={location.includes("/ranking") ? "current_path" : ""} data-path={"/ranking"}>랭킹</div>
+        <div className={location.includes("/commu") ? "current_path" : ""} data-path={"/commu"}>게시판</div>
         <div className={location.includes("/about") ? "current_path" : ""} data-path={"/about"}>어바웃</div>
       </section>
       {me ? (
         <section>
           <div onClick={login_or_logout}>로그아웃</div>
-          <div className={location.includes("/mypage") ? "current_path" : ""} data-path={"/mypage"}>마이페이지</div>
+          <div className={location.includes("/mypage") ? "current_path" : ""} data-path={"/register"}>마이페이지</div>
         </section>
       ) : (
         <section>
