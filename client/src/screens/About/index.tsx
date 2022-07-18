@@ -1,3 +1,4 @@
+import React from "react"
 import Button from "../../compts/Button"
 import Constants from "../../lib/Constants"
 import { BaseScreen, Row } from "../../lib/styled"

@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useRecoilState } from "recoil"
-import { req_me } from "../api"
+import API from "../api"
 import { __me, __session } from "../atom"
 
 export default () => {
@@ -14,10 +14,13 @@ export default () => {
       try{
         console.log("session 탐색")
         if(session){
-          console.log("session 존재")
-          const res = await req_me(session)
+          if(me) return console.log("me 존재")
+          console.log("me 요청")
+          const res = await API.users.me({session})
+          if(!res) return set_session(undefined)
           set_me(res)
         }else{
+          console.log("session 없음: 초기화")
           set_me(undefined)
         }
       }catch(err){
@@ -29,10 +32,6 @@ export default () => {
       }
     }
     refresh()
-  }, [session])
-  // me 없으면 홈으로 이동
-  useEffect(()=>{
-    if(!me) navigate('/', {replace: true})
-  }, [me])
+  }, [session, me])
   return null
 }

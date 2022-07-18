@@ -10,14 +10,14 @@ import Constants from '../lib/Constants'
 // style<React.CSSProperties : 스타일 객체
 
 interface DaumPostcodeProps {
-  setAddress: React.Dispatch<React.SetStateAction<Address | undefined>>
+  setPostCode: React.Dispatch<React.SetStateAction<Address | undefined>>
 }
 export default (props:DaumPostcodeProps) => {
   const [isOpened, set_isOpened] = useState<boolean>(false)
   // 주소 선택
   const selectAddress = (address: Address) => {
     console.log(address)
-    if(props.setAddress) props.setAddress(address)
+    if(props.setPostCode) props.setPostCode(address)
     set_isOpened(false)
   }
   // 외부 스크롤 방지

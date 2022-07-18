@@ -1,6 +1,6 @@
 import styled, {css} from "styled-components";
 import Constants from './Constants'
-import {GridProps} from './IF'
+import {IF_grid} from './IF'
 
 export const Row = styled.div`
   display: flex;
@@ -25,12 +25,23 @@ export const BaseScreen = styled.div`
     padding: 100px 20px 40px;
   }
 `
-export const Grid = styled.div<GridProps>`
+export const Grid = styled.div<IF_grid>`
   width: 100%;
   display: grid;
   grid-template-rows: ${(props) => props.row || ""};
   grid-template-columns: ${(props) => props.col || ""};
   gap: ${(props) => props.gap || "0"};
+  ${props => props.placeholder === "static" && css`
+    & > p{
+      font-size: 13px;
+      font-weight: 500;
+      color: ${Constants.colors.baseColor2};
+    }
+    & > div{
+      font-size: 12px;
+      color: ${Constants.colors.baseColor3};
+    }
+  `}
 `;
 
 // Common
@@ -84,16 +95,6 @@ export const CommonFooter = styled.div`
     height: 1px;
     background-color: ${Constants.colors.baseColor5};
     margin: 20px 0;
-  }
-  & > div:nth-of-type(3){
-    & > div{
-      font-size: 12px;
-      color: ${Constants.colors.baseColor3};
-    }
-    & > div.footer_field{
-      font-weight: 500;
-      color: ${Constants.colors.baseColor2};
-    }
   }
 `
 export const CommonLoading = styled.div`
@@ -149,6 +150,23 @@ export const ModalLogin = styled.form`
   border: 1px solid ${Constants.colors.baseColor6};
   border-radius: 8px;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+  & > section{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+`
+export const ModalExit = styled.form`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  & > div:first-child{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
   & > section{
     display: flex;
     justify-content: space-between;
@@ -326,9 +344,21 @@ export const InputImage = styled.div`
     height: 100%;
   }
 `
+export const InputSearch = styled.form`
+  display: grid;
+  grid-template-columns: 120px 60px;
+  gap: 10px;
+  & > input{
+    height: 36px;
+  }
+  & > button{
+    height: 36px;
+    padding: 0 5px;
+  }
+`
 export const InputDate = styled.div`
 position: relative;
-max-width: 400px;
+width: 100%;
 height: 40px;
 display: flex;
 align-items: center;
@@ -356,6 +386,7 @@ color: ${props => props.placeholder ? Constants.colors.baseColor5 : "inherit"};
   width: 100%;
   height: 100%;
   opacity: 0;
+  cursor: pointer;
   ::-webkit-calendar-picker-indicator{
     width: 100%;
     height: 100%;
@@ -394,6 +425,46 @@ export const InputArea = styled.textarea`
   }
   ::-webkit-scrollbar {
     display: none;
+  }
+`
+export const InputProfileImage = styled.div`
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  & > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  & > input{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    opacity: 0;
+    cursor: pointer;
+  }
+  & > button{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    cursor: pointer
+  }
+  &:hover > button{
+    opacity: 1;
   }
 `
 // Card
@@ -489,6 +560,7 @@ export const FrameSelectBox = styled(Grid)`
     -webkit-transition: 0.2s;
     &:hover{
       background-color: ${Constants.colors.pointColor4};
+      border-color: ${Constants.colors.pointColor3};
     }
   }
   & > button.selectBox_selected{
@@ -702,7 +774,7 @@ export const Font20B = styled(Font20)`
   font-weight: 700;
 `
 export const PointFont = styled(Font20)`
-  padding: 10px 0;
+  margin: 30px 0 15px;
   color: ${Constants.colors.pointColor1};
   white-space: nowrap;
 `

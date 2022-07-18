@@ -1,70 +1,91 @@
 import axios, {AxiosError} from 'axios'
 import Constants from './Constants'
 import {
-  IF_req_login, 
-  IF_res_login,
+  IF_exit,
   IF_member,
-  IF_req_post,
+  IF_private,
+  IF_reqLogin,
+  IF_session,
 } from "./IF"
 
 const Axios = axios.create({
-  // baseURL: "/"
-  baseURL: Constants.URI.base,
+  // baseURL: "/" // 배포후
+  baseURL: Constants.URI.base, // 배포전
   withCredentials: true,
 })
 
 // 에러로직 일괄처리
-const handleError = (err) => {
+const handleError = (err:any) => {
   const error = err as Error | AxiosError
   console.log(error)
-  if(axios.isAxiosError(error)) window.alert(error.response.data)
+  if(axios.isAxiosError(error) && error.response) window.alert(error.response.data)
   else window.alert(error.message)
 }
-// 회원가입
-export const req_register = async (params: FormData) => {
-  try{
-    const res = await Axios.post<IF_res_login>("/user", params, {headers: {'Content-Type':'multipart/form-data'}})
-    console.log(res)
-    if(res.data) return res.data
-  }catch(err){
-    handleError(err)
+
+const users = {
+  // 회원가입
+  register: async (params:FormData) => {
+    try{
+      const res = await Axios.post<IF_session>("/users", params, {headers: {'Content-Type': 'multipart/form-data'}})
+      if(res.data) return res.data
+    }catch(err){
+      handleError(err)
+    }
+  },
+  // 로그인
+  login: async (params:IF_reqLogin) => {
+    try{
+      const res = await Axios.patch<IF_session>('/users/login', params)
+      if(res.data) return res.data
+    }catch(err){
+      handleError(err)
+    }
+  },
+  // 회원정보 요청
+  me: async (params:IF_session) => {
+    try{
+      const res = await Axios.get<IF_member>(`/users/${params.session}`)
+      if(res.data) return res.data
+    }catch(err){
+      handleError(err)
+    }
+  },
+  // 사적정보 요청
+  private: async (params:IF_session) => {
+    try{
+      const res = await Axios.get<IF_private>(`/users/private/${params.session}`)
+      if(res.data) return res.data
+    }catch(err){
+      handleError(err)
+    }
+  },
+  // 로그아웃
+  logout: async (params:IF_session) => {
+    try{
+      const res = await Axios.patch('/users/logout', {session: params.session})
+      if(res.data) return res.data
+    }catch(err){
+      handleError(err)
+    }
+  },
+  // 회원수정
+  modify: async (params:FormData) => {
+    try{
+      const res = await Axios.patch('/users', params, {headers: {'Content-Type': 'multipart/form-data'}})
+      if(res.data) return res.data
+    }catch(err){
+      handleError(err)
+    }
+  },
+  // 회원탈퇴
+  exit: async (params:IF_exit) => {
+    try{
+      const res = await Axios.delete(`/users/${params.session}?id=${params.id}&ps=${params.ps}`)
+      if(res.data) return res.data
+    }catch(err){
+      handleError(err)
+    }
   }
 }
-// 로그인
-export const req_login = async (params:IF_req_login) => {
-  try{
-    const res = await Axios.post<IF_res_login>("/user/login", params)
-    console.log(res)
-    if(res.data) return res.data
-  }catch(err) {
-    handleError(err)
-  }
-}
-// 개인정보
-export const req_me = async (session: string) => {
-  try{
-    const res = await Axios.get<IF_member>(`/user/${session}`)
-    console.log(res)
-    if(res.data) return res.data
-  }catch(err){
-    handleError(err)
-  }
-}
-// 로그아웃
-export const req_logout = async (session: string) => {
-  try{
-    const res = await Axios.patch('/user/logout', {session})
-    if(res.data.result) return true
-  }catch(err){
-    handleError(err)
-  }
-}
-// 게시글 업로드
-export const req_post = async (params:IF_req_post) => {
-  try{
-    const res = await Axios.post('/post', params)
-    if(res.data.result) return true
-  }catch(err){
-    handleError(err)
-  }
-}
+
+export default {users}

@@ -1,10 +1,10 @@
 import React from "react"
-import { BaseScreen } from "../../lib/styled"
+import { BaseScreen, PointFont } from "../../lib/styled"
 
 export default () => {
   return(
     <BaseScreen>
-      제품
+      <PointFont>내가 쓴 글</PointFont>
     </BaseScreen>
   )
 }
