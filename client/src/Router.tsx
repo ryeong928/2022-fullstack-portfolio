@@ -6,10 +6,8 @@ import Commu from './screens/Commu'
 import PostDetail from './screens/Commu/PostDetail'
 import PostWrite from './screens/Commu/PostWrite'
 import Home from './screens/Home'
-import Products from './screens/Products'
 import Register from './screens/Register'
 import MyPage from './screens/MyPage'
-import MyPurchase from './screens/MyPage/MyPurchase'
 import MyPosts from './screens/MyPage/MyPosts'
 
 export default () => {
@@ -19,7 +17,6 @@ export default () => {
     <Routes location={location}>
       <Route path="/" element={<Home />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/products" element={<Products />} />
       <Route path="/commu" element={<Commu />} />
       <Route path="/commu/:_id" element={<PostDetail />} />
       <Route path="/commu/write" element={<PostWrite />} />
@@ -28,7 +25,7 @@ export default () => {
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/mypage/modify" element={<Register />} />
       <Route path="/mypage/posts" element={<MyPosts />} />
-      <Route path="/mypage/purchase" element={<MyPurchase />} />
     </Routes>
   )
 }
+

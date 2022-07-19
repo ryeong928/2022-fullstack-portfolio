@@ -1,3 +1,6 @@
 module.exports = {
-  ...require('./User')
+  ...require('./User'),
+  ...require('./Post'),
+  ...require('./Product'),
+  ...require('./Purchase'),
 }

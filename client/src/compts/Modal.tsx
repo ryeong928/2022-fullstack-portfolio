@@ -6,7 +6,6 @@ import { IF_exit, IF_reqLogin } from '../lib/IF';
 import API from '../lib/api';
 import Button from './Button'
 import Input from './Input'
-import Common from './Common'
 import { LoadingContext } from '../context/LoadingContext';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';

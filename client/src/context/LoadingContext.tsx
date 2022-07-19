@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { createContext, useState } from 'react'
 import {IF_loading} from '../lib/IF'
 import styled from 'styled-components'
@@ -25,21 +25,22 @@ const StyledLoadingComponent = styled.div`
   font-weight: 500;
 `
 const LoadingComponent = () => {
+  const targetRef = useRef<HTMLDivElement>(null)
   const onClick = (e:React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
   }
   useEffect(()=>{
+    targetRef.current?.focus()
     document.body.setAttribute('style', 'overflow: hidden')
     return () => {document.body.setAttribute('style', 'overflow: auto')}
   }, [])
-  return <StyledLoadingComponent onClick={onClick}>Loading...</StyledLoadingComponent>
+  return <StyledLoadingComponent onClick={onClick} ref={targetRef}>Loading...</StyledLoadingComponent>
 }
 
 export const LoadingStore = (props:any) => {
   const [isLoading, set_isLoading] = useState<boolean>(false)
   const [loadingTime, set_loadingTime] = useState<number>(500)
-  console.log('로딩 컨텍스트: ', isLoading)
   useEffect(()=>{
     let timer: undefined | ReturnType<typeof setTimeout>
     if(isLoading) timer = setTimeout(()=>{set_isLoading(prev => false)}, loadingTime)
@@ -48,7 +49,7 @@ export const LoadingStore = (props:any) => {
 
   return(
     <LoadingContext.Provider value={{isLoading, set_isLoading, set_loadingTime}}>
-      {isLoading && <LoadingComponent />}
+      {isLoading && <LoadingComponent/>}
       {props.children}
     </LoadingContext.Provider>
   )

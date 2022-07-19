@@ -33,8 +33,7 @@ const Header = () => {
     <CommonHeader onClick={selectPath}>
       <section>
         <div className={location === "/" ? "current_path" : ""} data-path={"/"}>홈</div>
-        <div className={location.includes("/products") ? "current_path" : ""} data-path={"/products"}>제품</div>
-        <div className={location.includes("/commu") ? "current_path" : ""} data-path={"/commu"}>게시판</div>
+        <div className={location.includes("/commu") ? "current_path" : ""} data-path={"/commu?search=&index=0&base=1"}>게시판</div>
         <div className={location.includes("/about") ? "current_path" : ""} data-path={"/about"}>어바웃</div>
       </section>
       {me ? (

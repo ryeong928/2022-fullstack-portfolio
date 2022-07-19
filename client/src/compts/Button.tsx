@@ -1,5 +1,6 @@
 import React from 'react'
-import {ButtonMain, ButtonSub, ButtonNotice1, ButtonNotice2} from '../lib/styled'
+import {ButtonMain, ButtonSub, ButtonNotice1, ButtonNotice2, ButtonMove} from '../lib/styled'
+import {ReactComponent as ArrowRight} from '../resources/ArrowRight.svg'
 
 // 타입지정 ({children, ...rest}:{children: React.ReactNode} & React.HTMLAttributes<HTMLDivElement>)
 interface ButtonMainProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
@@ -34,9 +35,18 @@ const Notice2 = (props:ButtonNoticeProps) => {
     <ButtonNotice2 color={color || ""} placeholder={width || ""} {...rest}>{props.children}</ButtonNotice2>
   )
 }
+const Move = (props:React.HTMLAttributes<HTMLDivElement>) => {
+  return(
+    <ButtonMove {...props}>
+      <div>{props.children}</div>
+      <ArrowRight />
+    </ButtonMove>
+  )
+}
 export default {
   Main,
   Sub,
   Notice1,
-  Notice2
+  Notice2,
+  Move
 }

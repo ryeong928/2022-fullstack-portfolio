@@ -24,16 +24,16 @@ export interface IF_ImageData{
   preview: string | undefined
 }
 // 페이지네이션 props
-export interface IF_paginationData{
-  count: number // 글 전체 갯수
-  countPerPage: number // 한 페이지 당 글 갯수
-  pageCount: number // 나열할 최대 페이지 수
-  variation: number // 화살표 클릭시 증감량
+export interface IF_paginationConstants{
+  count: number
+  countPerPage: number
+  pageCount: number
+  variation: number
 }
 // 페이지네이션 변수
-export interface IF_paginationCurrent {
-  index: number // 현재 활성화된 페이지 인덱스: 0 ~ pageCount
-  base: number // 페이지 이동량
+export interface IF_paginationVariables {
+  index: number
+  base: number
 }
 // 페이지네이션
 export interface IF_pagination {
@@ -123,7 +123,7 @@ export interface IF_post {
   views: string
   date: string
 }
-export interface IF_resGetPosts {
+export interface IF_getPosts {
   posts: IF_post[]
   count: number
 }

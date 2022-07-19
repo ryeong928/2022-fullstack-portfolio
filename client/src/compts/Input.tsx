@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import { IF_ImageData } from '../lib/IF'
 import {InputMain, InputImage, InputDate, InputTitle, InputArea, InputSearch, InputProfileImage} from '../lib/styled'
 import Constants from '../lib/Constants'
 import IconCalendar from '../resources/IconCalendar.svg'
 import SVGProfile from '../resources/SVGProfile.svg'
-import IconCamera from '../resources/IconCamera.svg'
+import Button from './Button'
 
 interface InputMainProps extends React.HTMLAttributes<HTMLInputElement>{
   value: string
@@ -12,7 +12,8 @@ interface InputMainProps extends React.HTMLAttributes<HTMLInputElement>{
   placeholder?: string
   readOnly?: boolean
   type?: string
-  reqSearch?: () => void // InputSearch
+  reqSearch?: () => void // InputSearch 용
+  border?: true // border 전방향 활성화
 }
 const Main = (props: InputMainProps) => {
   const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -27,18 +28,21 @@ const Main = (props: InputMainProps) => {
     type={props.type || "text"} 
     spellCheck={false}
     style={props.style}
+    color={props.border ? "borderAll" : ""}
     />
   )
 }
 const Search = (props:InputMainProps) => {
   const onSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    props.reqSearch()
+    const input = e.currentTarget.children[0] as HTMLInputElement
+    input.blur()
+    props.reqSearch && props.reqSearch()
   }
   return(
     <InputSearch onSubmit={onSubmit}>
       <Main value={props.value} setValue={props.setValue} placeholder={props.placeholder}/>
-      <button type="submit">검색</button>
+      <Button.Sub color="white" type="submit">검색</Button.Sub>
     </InputSearch>
   )
 }
@@ -68,7 +72,17 @@ const Image = (props:InputImageProps) => {
     const inputTag = e.currentTarget as HTMLInputElement
     const files = inputTag.files as FileList
     if(!files) return
-    for(let i=0; i<files.length ;i++){
+    for(let i=0; i < files.length ;i++){
+      // 이미지 등록 갯수 제한
+      if(i === 3){
+        inputTag.value =""
+        return window.alert("사진은 최대 3장까지 입니다")
+      }
+      // 이미지 사이즈 제한
+      if(files[i].size > 1024 * 1024 * 3) {
+        inputTag.value = ""
+        return window.alert("사이즈가 3MB를 초과합니다")
+      }
       // 업로드용
       const uploadFile = files[i]
       // 미리보기용
@@ -81,12 +95,16 @@ const Image = (props:InputImageProps) => {
         }
         // 단일 | 복수 에 따른 로직 분리
         if(props.count === 1) props.setValue([temp])
-        else if(props.count > 1) props.setValue(prev => [...prev, temp])
-        // input value 초기화
-        inputTag.value = ""
+        else if(props.count > 1) props.setValue(prev => {
+          // 이미지 등록 갯수 제한
+          if(prev.length === 3) return [...prev]
+          else return [...prev, temp]
+        })
       }
       fileReader.readAsDataURL(files[i])
     }
+    // input value 초기화
+    inputTag.value = ""
   }
   return (
     <input

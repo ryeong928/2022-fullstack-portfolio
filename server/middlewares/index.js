@@ -1,3 +1,5 @@
 module.exports = {
-  ...require('./imageUpload')
+  ...require('./auth'),
+  ...require('./auth2'),
+  ...require('./imgUpload')
 }

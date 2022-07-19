@@ -24,6 +24,12 @@ export const BaseScreen = styled.div`
   @media (max-width: 450px){
     padding: 100px 20px 40px;
   }
+  ${props => props.placeholder && css`
+    @media (min-width: ${props.placeholder}){
+      width: ${props.placeholder};
+      margin: 0 auto;
+    }
+  `}
 `
 export const Grid = styled.div<IF_grid>`
   width: 100%;
@@ -296,6 +302,27 @@ export const ButtonNotice2 = styled.button`
   color: ${Constants.colors.purple1};
   background-color: ${Constants.colors.baseColor9};
 `
+export const ButtonMove = styled.div`
+  display: block;
+  position: relative;
+  max-width: 300px;
+  height: 70px;
+  padding: 0 10px 0 30px;
+  border-radius: 20px;
+  background-color: white;
+  border: 1px solid ${Constants.colors.baseColor5};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  &:hover{
+    border-color: ${Constants.colors.pointColor1};
+    color: ${Constants.colors.pointColor1};
+    & svg{
+      fill: ${Constants.colors.pointColor1};
+    }
+  }
+`
 // Input
 export const InputMain = styled.input`
   font-size: 14px;
@@ -304,7 +331,9 @@ export const InputMain = styled.input`
   height: 40px;
   outline: none;
   border: none;
-  border-bottom: 1px solid ${(props) => props.value ? Constants.colors.baseColor2 : Constants.colors.baseColor5};
+  ${props => props.color === "borderAll" ? (
+    css`border: 1px solid ${props.value ? Constants.colors.baseColor2 : Constants.colors.baseColor5};`
+  ) : css`  border-bottom: 1px solid ${props.value ? Constants.colors.baseColor2 : Constants.colors.baseColor5};`}
   padding: 0 10px;
   &::placeholder {
     font-size: 13px;
@@ -349,10 +378,10 @@ export const InputSearch = styled.form`
   grid-template-columns: 120px 60px;
   gap: 10px;
   & > input{
-    height: 36px;
+    height: 30px;
   }
   & > button{
-    height: 36px;
+    height: 30px;
     padding: 0 5px;
   }
 `
@@ -569,6 +598,41 @@ export const FrameSelectBox = styled(Grid)`
     background-color: ${Constants.colors.pointColor1};
   }
 `
+export const FramePagination = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  & > svg{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    fill: #333;
+    &:hover{
+      transition: 0.2s;
+      fill: red;
+    }
+  }
+  & > section{
+    display: flex;
+    gap: 5px;
+    & > div{
+      font-size: 14px;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+    & > div:hover{
+      transition: 0.2s;
+      color: red;
+      transform: translateY(-1.5px);
+    }
+    & > div.pagination_currentIndex{
+      color: hotpink;
+    }
+  }
+`
 export const FramePostPagination = styled.div`
   display: flex;
   justify-content: space-between;
@@ -631,6 +695,274 @@ export const ProfileImage = styled.div`
     object-fit: cover;
     border-radius: 50%;
     overflow: hidden;
+  }
+`
+export const PostsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  & > section{
+    border: 1px solid #666;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover{
+      background-color: #333;
+      color: white;
+    }
+    & > div:nth-of-type(1){
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    & > div:nth-of-type(2){
+      display: flex;
+      gap: 5px 20px;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+  }
+`
+export const PostActionContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-top: calc(20px + 20px);
+  margin-top: 20px;
+  & > section:nth-of-type(1){
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+  }
+  & > section:nth-of-type(2){}
+  & > section:nth-of-type(3){}
+`
+export const PostWriteContainer = styled.div`
+  width: 100%;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  & > section{
+    width: 100%;
+  }
+  & > section:nth-of-type(3){
+    position: relative;
+    height: 120px;
+    background-color: gray;
+    border: 1px solid #333;
+    border-radisu: 10px;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    & > sub{
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      z-index: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+    }
+    & > input{
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      opacity: 0;
+    }
+    & > div{
+      position: relative;
+      z-index: 0;
+      width: 100px;
+      height: 100px;
+    }
+    & > div.preview_img{
+      z-index: 2;
+      cursor: pointer;
+      & > img{
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      & > div{
+        position: absolute;
+        font-size: 14px;
+        z-index: 4;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 100px;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        text-align: center;
+        opacity: 0;
+        transition: 0.1s;
+      }
+      &:hover > div{
+        opacity: 1;
+      }
+    }
+  }
+  & > section:nth-of-type(4){
+    margin-top: 30px;
+    & > button{
+      width: 100%;
+    }
+  }
+`
+export const PostDetailContainer = styled.div`
+  max-width: 800px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  & > section{
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #aaa;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  & > section:nth-of-type(1){
+    & > div:nth-of-type(1){
+      font-weight: bold;
+    }
+    & > div:nth-of-type(2){
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      & > div:nth-of-type(1){
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        & > img:nth-of-type(1){
+          width: 100%;
+          height: 100%;
+          object-fit:cover;
+        }
+      }
+      & > div:nth-of-type(2){
+        flex: 1;
+      }
+    }
+  }
+  & > section:nth-of-type(2){
+    & > div:nth-of-type(1){
+      width: 100%;
+      & > img{
+        width: 100%;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+    }
+    & > div:nth-of-type(2){
+      white-space: pre-wrap; 
+      word-break: break-word;
+    }
+    & > div:nth-of-type(3){
+      margin: 100px auto 0;
+      text-align: center;
+      font-size: 14px;
+      width: 70px;
+      height: 70px;
+      background-color: white;
+      color: ${props => props.color === "like" ? "red" : "black"};
+      border: 1px solid ${props => props.color === "like" ? "red" : "black"};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-transition: 0.1s;
+      &:hover{
+        cursor: pointer;
+        color: red;
+        border-color: red;
+      }
+    }
+    & > button:nth-of-type(1){
+      width: 70px;
+      padding: 0 10px;
+      position: absolute;
+      right: 10px;
+      bottom: 45px;
+      height: 30px;
+    }
+    & > button:nth-of-type(2){
+      width: 70px;
+      padding: 0 10px;
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      height: 30px;
+    }
+  }
+  & > section:nth-of-type(3){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  & > section:nth-of-type(4){
+    margin-top: 30px;
+  }
+`
+export const CommentsBox = styled.div`
+  width: 100%;
+  background-color: white;
+  border: 1px solid #aaa;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  & > header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    & > div:nth-of-type(1){
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      overflow: hidden;
+      & > img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    & > div:nth-of-type(2){
+      font-size: 14px;
+      flex: 1;
+    }
+    & > div:nth-of-type(3),
+    & > div:nth-of-type(4){
+      font-size: 12px;
+    }
+  }
+  & > main{
+    white-space: pre-wrap; 
+    word-break: break-word;
+  }
+  & > sub{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    & > button{
+      width: 70px;
+    }
+  }
+  & > button{
+    width: 100%;
   }
 `
 // Font
@@ -774,7 +1106,7 @@ export const Font20B = styled(Font20)`
   font-weight: 700;
 `
 export const PointFont = styled(Font20)`
-  margin: 30px 0 15px;
+  margin: 15px 0 15px;
   color: ${Constants.colors.pointColor1};
   white-space: nowrap;
 `

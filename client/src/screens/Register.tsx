@@ -10,7 +10,7 @@ import Constants from "../lib/Constants";
 import Fakes from "../lib/Fakes";
 import { IF_ImageData, IF_member, IF_modify, IF_private, IF_register } from "../lib/IF";
 import {Address} from 'react-daum-postcode'
-import { BaseScreen, PointFont, Font16, Font14, Row, RowCen, Col, Grid, Center } from "../lib/styled";
+import { BaseScreen, PointFont, Font16, Font14, Row, RowCen, Grid, Center, Font13 } from "../lib/styled";
 import {ReactComponent as CheckCircle} from '../resources/CheckCircle.svg'
 import {ReactComponent as ArrowRight} from '../resources/ArrowRight.svg'
 import { LoadingContext } from "../context/LoadingContext";
@@ -143,6 +143,10 @@ export default () => {
       <Center>
         <Input.ProfileImage value={img} setValue={set_img} count={1} setDeleteImg={set_deleteImg} style={{marginBottom: 20}}/>
       </Center>
+      <Row style={{marginBottom: 20, justifyContent: "space-between"}}>
+        <Font13 style={{color: Constants.colors.blue}}>*사진 크기는 3MB 이하</Font13>
+        {img[0].file && <Font13>선택된 이미지 크기 {(img[0].file.size/(1024*1024)).toFixed(2)}MB</Font13>}
+      </Row>
       <Frame.SelectBox col="1fr 1fr" row="" gap="10px" list={["남자", "여자"]} option={sex} setOption={set_sex} style={{marginBottom: 20}}/>
       <Input.Date value={birth} setValue={set_birth} placeholder="생년월일" style={{marginBottom: 20}}/>
       <Grid col="1fr 76px" row="" gap="8px" style={{alignItems: "end", marginBottom: 20}}>
