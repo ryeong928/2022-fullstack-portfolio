@@ -1,5 +1,6 @@
 require('dotenv').config()
 const ENV = process.env
+const PORT = ENV.PORT || 5000
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
@@ -30,5 +31,5 @@ if(ENV.NODE_ENV === "production"){
 mongoose.connect(ENV.DB_URI).then(()=>{
   console.log("데이터베이스 연결 성공")
   // 서버 실행
-  app.listen(ENV.PORT, () => console.log(`포트 ${ENV.PORT} 서버 실행`))
+  app.listen(PORT, () => console.log(`포트 ${PORT} 서버 실행`))
 }).catch(err => console.log("서버 실행 에러: ", err))
