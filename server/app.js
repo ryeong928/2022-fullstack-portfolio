@@ -18,17 +18,11 @@ app.use('/posts', Router.posts)
 app.use('/comments', Router.comments)
 app.use('/shopping', Router.shopping)
 
-app.use(express.static(`${__dirname}/build`))
-app.get('*', (req, res) => {
-  console.log("g2")
-  res.sendFile(`${__dirname}/build/index.html`)
-})
-
 // 헤로쿠배포
 if(ENV.NODE_ENV === "production"){
   app.use(express.static(`${__dirname}/build`))
   app.get('*', (req, res) => {
-    res/sendFile(`${__dirname}/build/index.html`)
+    res.sendFile(`${__dirname}/build/index.html`)
   })
 }
 
