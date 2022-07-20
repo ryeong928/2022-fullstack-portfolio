@@ -34,6 +34,7 @@ mongoose.connect(ENV.DB_URI).then(()=>{
   app.listen(PORT, () => console.log(`포트 ${PORT} 서버 실행`))
 }).catch(err => console.log("서버 실행 에러: ", err))
 
+// 비동기요청 주소 '/' 로 변경
 // 프로젝트 package.json stript 작성
 // client -> npm ci -> npm run build -> build폴더를 server로 이동
 // server -> npm ci -> tsc -> node app.js

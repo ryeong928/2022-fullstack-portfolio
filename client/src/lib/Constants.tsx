@@ -26,7 +26,7 @@ const colors = {
 }
 const URI = {
   // img: 'http://localhost:5000/img/'
-  img: '/img',
+  img: '/img/',
 }
 export default {
   colors,
