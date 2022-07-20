@@ -33,3 +33,8 @@ mongoose.connect(ENV.DB_URI).then(()=>{
   // 서버 실행
   app.listen(PORT, () => console.log(`포트 ${PORT} 서버 실행`))
 }).catch(err => console.log("서버 실행 에러: ", err))
+
+// 프로젝트 package.json stript 작성
+// client -> npm ci -> npm run build -> build폴더를 server로 이동
+// server -> npm ci -> tsc -> node app.js
+// 헤로쿠 설정 config vars에 .env 값 할당

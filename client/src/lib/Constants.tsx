@@ -25,8 +25,8 @@ const colors = {
   kakao: "rgb(250,225,0)",
 }
 const URI = {
-  base: 'http://localhost:5000',
-  img: 'http://localhost:5000/img/'
+  // img: 'http://localhost:5000/img/'
+  img: '/img',
 }
 export default {
   colors,

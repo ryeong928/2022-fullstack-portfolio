@@ -6,5 +6,3 @@ ReactDOM.render(
   ,document.getElementById('root')
 );
 
-// client -> npm ci -> npm run build -> build폴더를 server로 이동
-// server -> npm ci -> tsc -> node app.js
