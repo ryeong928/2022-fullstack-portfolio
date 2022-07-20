@@ -208,7 +208,7 @@ export default () => {
                     <Button.Sub color="white" onClick={()=>{commentDelete(comment)}}>삭제</Button.Sub>
                   </sub>
                 )}
-                {isModify === comment._id && <button onClick={()=>{commentModify(comment)}}>수정하기</button>}
+                {isModify === comment._id && <Button.Sub onClick={()=>{commentModify(comment)}}>수정하기</Button.Sub>}
               </CommentsBox>
             )) : <div style={{color: 'gray', margin: "20px 0"}}>코멘트가 없습니다</div>}
             <div>

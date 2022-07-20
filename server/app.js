@@ -11,7 +11,6 @@ const Router = require('./routes')
 app.use(cors({origin: true, credentials: true}))
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({extended: true})) // for parsing application/x-www-form-urlencoded
-// app.use('/img', express.static('img'))
 
 // 라우터
 app.use('/users', Router.users)
@@ -25,6 +24,8 @@ if(ENV.NODE_ENV === "production"){
   app.get('*', (req, res) => {
     res.sendFile(`${__dirname}/build/index.html`)
   })
+}else{
+  app.use('/img', express.static('img'))
 }
 
 // 몽고디비

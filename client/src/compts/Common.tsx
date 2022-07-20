@@ -64,9 +64,11 @@ const Footer = () => {
         <p>이메일</p>
         <div>ryeong928@naver.com</div>
         <p>깃헙</p>
-        <div>https://github.com/ryeong928?tab=repositories</div>
+        <div><a href="https://github.com/ryeong928?tab=repositories" target="_blank">https://github.com/ryeong928?tab=repositories</a></div>
         <p>스택</p>
-        <div>react, axios, styled-components, node, express, mongoDB</div>
+        <div>react, typescript, axios, styled-components, node, express, mongoDB</div>
+        <p>배포</p>
+        <div>heroku</div>
       </Grid>
     </CommonFooter>
   )

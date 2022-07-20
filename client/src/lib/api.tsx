@@ -17,8 +17,7 @@ import {
 } from "./IF"
 
 const Axios = axios.create({
-  baseURL: "/", // 배포용
-  // baseURL: Constants.URI.base, // 배포전
+  baseURL: Constants.URI.base, // 배포전
   withCredentials: true,
 })
 

@@ -836,7 +836,8 @@ export const PostDetailContainer = styled.div`
   }
   & > section:nth-of-type(1){
     & > div:nth-of-type(1){
-      font-weight: bold;
+      white-space: normal;
+      word-break: break-all;
     }
     & > div:nth-of-type(2){
       display: flex;
